@@ -1,0 +1,41 @@
+﻿<Window x:Class="MatrixRowSwitch.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatrixRowSwitch"
+        mc:Ignorable="d" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Title="HelpWindow" Height="300" Width="400">
+    <WindowChrome.WindowChrome>
+        <WindowChrome UseAeroCaptionButtons="False" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{StaticResource ColorMainDarkBlue}" Grid.ColumnSpan="2" MouseLeftButtonDown="Window_Move">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="帮助信息" VerticalAlignment="Center" Margin="15,0" HorizontalAlignment="Left" Foreground="{StaticResource ColorMainLigthWhite}"
+                       FontSize="16"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                    <Button Style="{StaticResource btnGeneral}" Width="30" Height="30" Content="&#x268A;" Click="Window_Minimize" Foreground="{StaticResource ColorMainLigthWhite}"/>
+                    <Button Style="{StaticResource btnGeneral}" Width="30" Height="30" Content="&#x2715;" Click="Window_Close" Foreground="{StaticResource ColorMainLigthWhite}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Background="{StaticResource ColorMainDarkBlue}">
+            <Label x:Name="lblUsableCommand" FontSize="15" Foreground="{StaticResource ColorMainLigthWhite}" FontFamily="Consolas"
+                   Style="{StaticResource lblGeneral}"/>
+        </Border>
+        <Border Grid.Row="2" Background="{StaticResource ColorMainDarkBlack}">
+            <Label x:Name="lblTips" FontSize="15" Foreground="{StaticResource ColorMainLigthWhite}" FontFamily="Consolas"
+                   Style="{StaticResource lblGeneral}"/>
+        </Border>
+    </Grid>
+</Window>

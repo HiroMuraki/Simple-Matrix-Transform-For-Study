@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MatrixRowSwitch">
+    <SolidColorBrush x:Key="ColorMainDarkBlue" Color="#FF006694"/>
+    <SolidColorBrush x:Key="ColorMainLightBlue" Color="#FF007DB5"/>
+    
+    <SolidColorBrush x:Key="ColorMainDarkBlack" Color="#FF363636"/>
+    <SolidColorBrush x:Key="ColorMainMediumBlack" Color="#FF3D3D3D"/>
+    <SolidColorBrush x:Key="ColorMainLightBlack" Color="#FF5B5B5B"/>
+    
+    <SolidColorBrush x:Key="ColorMainLightYellow" Color="#FFFFD569"/>
+    <SolidColorBrush x:Key="ColorMainLigthWhite" Color="#FFFBFBFB"/>
+    
+    <SolidColorBrush x:Key="ColorGray" Color="#FFC6C6C6"/>
+</ResourceDictionary>

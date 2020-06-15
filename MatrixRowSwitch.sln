@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixRowSwitch", "MatrixRowSwitch\MatrixRowSwitch.csproj", "{BE5F6C32-6779-4761-8118-C1FDD55FDD0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE5F6C32-6779-4761-8118-C1FDD55FDD0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5F6C32-6779-4761-8118-C1FDD55FDD0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5F6C32-6779-4761-8118-C1FDD55FDD0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5F6C32-6779-4761-8118-C1FDD55FDD0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {517E8E2C-C8EF-4C82-9162-981D3BA264DB}
+	EndGlobalSection
+EndGlobal

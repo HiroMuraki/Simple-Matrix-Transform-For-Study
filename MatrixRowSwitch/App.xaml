@@ -1,0 +1,16 @@
+﻿<Application x:Class="MatrixRowSwitch.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MatrixRowSwitch"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/preTheme.xaml"/>
+                <ResourceDictionary Source="Styles/customStyles.xaml"/>
+                <ResourceDictionary Source="Styles/scrollviewerStyle.xaml"/>
+                <ResourceDictionary Source="Styles/expanderStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

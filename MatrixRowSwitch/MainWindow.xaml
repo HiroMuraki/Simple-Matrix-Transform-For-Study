@@ -1,0 +1,134 @@
+﻿<Window x:Class="MatrixRowSwitch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatrixRowSwitch" WindowStyle="None"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="" Height="500" Width="1050">
+    <WindowChrome.WindowChrome>
+        <WindowChrome UseAeroCaptionButtons="False" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid Background="{StaticResource ColorMainDarkBlue}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" MinWidth="10"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*" MinWidth="10"/>
+        </Grid.ColumnDefinitions>
+        <!--附加信息-->
+        <Grid Grid.Column="0">
+            <ScrollViewer Style="{StaticResource ScrollViewerGeneral}" Grid.Row="1" Grid.Column="2">
+                <TextBox x:Name="txtMatrixInformation" IsReadOnly="True" BorderThickness="0" Style="{StaticResource inputTextGeneral}"
+                         FontSize="16"/>
+            </ScrollViewer>
+        </Grid>
+        <GridSplitter Width="3" Grid.Column="1" Background="{StaticResource ColorMainLightYellow}" ResizeDirection="Columns" HorizontalAlignment="Stretch"/>
+        <!--主矩阵-->
+        <Grid Background="{StaticResource ColorMainLigthWhite}" Grid.Column="2" MouseLeftButtonDown="Window_DoubleClick">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <UniformGrid x:Name="panelColumnCount" Rows="1" Grid.Row="0" Grid.Column="1"/>
+            <UniformGrid x:Name="panelRowCount" Columns="1" Grid.Row="1" Grid.Column="0"/>
+            <UniformGrid x:Name="panelMatrix" Rows="3" Columns="3" Background="#FFFFFFFF" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <GridSplitter Width="3" Grid.Column="3" Background="{StaticResource ColorMainLightYellow}" ResizeDirection="Columns" HorizontalAlignment="Stretch"/>
+        <!--命令栏-->
+        <Grid Grid.Column="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" MinHeight="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <!--原矩阵输入框-->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="rowTitle" Height="30"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Border Background="{StaticResource ColorMainDarkBlue}" Grid.RowSpan="3" MouseLeftButtonDown="Window_DoubleClick"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="&#x21C6;" Style="{StaticResource btnGeneral}" Width="30" Height="30" Padding="0" Click="ReverseMatrixAB"/>
+                        <Label Style="{StaticResource lblGeneral}" Content="原矩阵(A, B)" HorizontalAlignment="Left"
+                           IsHitTestVisible="False"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                        <Button Content="&#x268A;" Style="{StaticResource btnGeneral}" Width="30" Height="30" Click="Window_Minimize"/>
+                        <Button Content="&#x2750;" Style="{StaticResource btnGeneral}" Width="30" Height="30" Click="Window_Maximize"/>
+                        <Button Content="&#x2715;" Style="{StaticResource btnGeneral}" Width="30" Height="30" Click="Window_Close"/>
+                    </StackPanel>
+                </Grid>
+                <ScrollViewer Grid.Row="1" Style="{StaticResource ScrollViewerGeneral}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="txtSourceMatrix" Style="{StaticResource inputTextGeneral}" FontSize="20" 
+                                 TextChanged="txtSourceMatrix_TextChanged" Grid.Column="0"/>
+                        <GridSplitter Width="2" ResizeDirection="Columns" Background="{StaticResource ColorMainLightYellow}" HorizontalAlignment="Stretch"
+                                      Grid.Column="1"/>
+                        <TextBox x:Name="txtSourceMatrixB" Style="{StaticResource inputTextGeneral}" FontSize="20" 
+                                 Grid.Column="2"/>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+            <!--比例调整-->
+            <GridSplitter Grid.Row="1" ResizeDirection="Rows" Height="2"
+                          Background="{StaticResource ColorMainLightYellow}" HorizontalAlignment="Stretch"/>
+            <!--矩阵变化命令输入框-->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="{StaticResource ColorMainDarkBlue}" Grid.RowSpan="2" Grid.ColumnSpan="2" MouseLeftButtonDown="Window_DoubleClick"/>
+                <DockPanel Margin="30,0,0,0" >
+                    <Label x:Name="lblCurrentMatrix" Content="变化命令(矩阵A)" HorizontalAlignment="Left" 
+                       Style="{StaticResource lblGeneral}" Grid.Column="0" IsHitTestVisible="False"/>
+                    <Button Style="{StaticResource btnGeneral}" Content="?" DockPanel.Dock="Right"
+                            HorizontalAlignment="Right" Width="30" Click="ShowHelp" />
+                </DockPanel>
+                <ScrollViewer Grid.Row="1" Style="{StaticResource ScrollViewerGeneral}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="txtSwitchInput" Style="{StaticResource inputTextGeneral}"
+                             TextChanged="txtSwitchInput_TextChanged" Grid.Column="0"/>
+                        <TextBox x:Name="txtSwitchRecord" IsReadOnly="True" 
+                             Style="{StaticResource inputTextGeneral}" Grid.Column="1"/>
+                    </Grid>
+                </ScrollViewer>
+                <Expander Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left"
+                          Foreground="#FFFFFF" Margin="0,5">
+                    <ScrollViewer Style="{StaticResource ScrollViewerGeneral}">
+                        <StackPanel Background="{StaticResource ColorMainDarkBlue}" HorizontalAlignment="Left">
+                            <Button Tag="btnUseMatrixA" Content="矩阵A" Click="btnCaculate_Click" Style="{StaticResource btnGeneral}" HorizontalAlignment="Left"/>
+                            <Button Tag="btnUseMatrixB" Content="矩阵B" Click="btnCaculate_Click" Style="{StaticResource btnGeneral}" HorizontalAlignment="Left"/>
+                            <Button Tag="btnGetSum" Content="A + B (相加)" Click="btnCaculate_Click" Style="{StaticResource btnGeneral}" HorizontalAlignment="Left"/>
+                            <Button Tag="btnGetMinus" Content="A - B (相减)" Click="btnCaculate_Click" Style="{StaticResource btnGeneral}" HorizontalAlignment="Left"/>
+                            <Button Tag="btnGetMultiply" Content="A x B (乘积)" Click="btnCaculate_Click" Style="{StaticResource btnGeneral}" HorizontalAlignment="Left"/>
+                            <Button Tag="btnGetHadamardProduct" Content="A * B (哈达马积)" Click="btnCaculate_Click" Style="{StaticResource btnGeneral}" HorizontalAlignment="Left"/>
+                            <Button Tag="btnGetKroneckerProduct" Content="A &#x2A02; B (克罗内克积)" Click="btnCaculate_Click" Style="{StaticResource btnGeneral}" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Expander>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
